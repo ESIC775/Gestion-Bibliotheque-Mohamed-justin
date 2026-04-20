@@ -15,7 +15,8 @@ INSERT INTO users (id, firstName, lastName, email, password, createdAt, updatedA
 VALUES
   (1, 'Amina', 'Bensaid', 'amina@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
   (2, 'Yanis', 'Dupont', 'yanis@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
-  (3, 'Mohamed', 'Daoud', 'mohamed@gmail.com', '$2b$10$61EQfLnhq9TYPcM14CI9j.qX0x4t24QPu1ekwat6Og..xT.nDaI1G', NOW(), NOW());
+  (3, 'Mohamed', 'Daoud', 'mohamed@gmail.com', '$2b$10$61EQfLnhq9TYPcM14CI9j.qX0x4t24QPu1ekwat6Og..xT.nDaI1G', NOW(), NOW()),
+  (4, 'Justin', 'Ami', 'justin@gmail.com', '$2b$10$nI6ZG0FMUFflDsaBj7x08.qyRNFr72JHAZd1gWooU3vOVilZpoiN6', NOW(), NOW());
 
 INSERT INTO member_profiles (id, address, phone, membershipNumber, joinedAt, userId, createdAt, updatedAt)
 VALUES
