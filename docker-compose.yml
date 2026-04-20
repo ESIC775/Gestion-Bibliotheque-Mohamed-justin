@@ -1,0 +1,68 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: library-db
+    environment:
+      MYSQL_DATABASE: library_db
+      MYSQL_ROOT_PASSWORD: Youssouf2000
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pYoussouf2000"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build: .
+    container_name: library-api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: 3000
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: library_db
+      DB_USER: root
+      DB_PASSWORD: Youssouf2000
+      DB_SYNC: "true"
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  frontend:
+    build: ./library-frontend
+    container_name: library-frontend
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "5173:5173"
+
+  db-seed:
+    image: mysql:8.0
+    container_name: library-db-seed
+    depends_on:
+      db:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    volumes:
+      - ./db/seed.sql:/seed/seed.sql:ro
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "until mysql -h db -u root -pYoussouf2000 library_db -e \"SELECT 1 FROM users LIMIT 1\" > /dev/null 2>&1; do echo 'Attente création des tables...'; sleep 2; done;
+      echo 'Injection du jeu de données minimal...';
+      mysql -h db -u root -pYoussouf2000 library_db < /seed/seed.sql;
+      echo 'Seed terminé.'"
+    restart: "no"
+
+volumes:
+  mysql_data:

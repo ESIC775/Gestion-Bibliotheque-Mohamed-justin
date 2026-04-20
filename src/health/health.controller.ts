@@ -1,0 +1,16 @@
+import { Controller, Get } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+
+@ApiTags('health')
+@Controller('health')
+export class HealthController {
+  @Get()
+  @ApiOperation({ summary: 'Vérifier que l’API est disponible' })
+  check() {
+    return {
+      status: 'ok',
+      service: 'library-api',
+      timestamp: new Date().toISOString(),
+    };
+  }
+}
