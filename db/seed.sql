@@ -21,7 +21,9 @@ VALUES
 INSERT INTO member_profiles (id, address, phone, membershipNumber, joinedAt, userId, createdAt, updatedAt)
 VALUES
   (1, '12 rue des Fleurs, Paris', '+33601020304', 'MEM-2026-001', NOW(), 1, NOW(), NOW()),
-  (2, '5 avenue du Livre, Lyon', '+33605060708', 'MEM-2026-002', NOW(), 2, NOW(), NOW());
+  (2, '5 avenue du Livre, Lyon', '+33605060708', 'MEM-2026-002', NOW(), 2, NOW(), NOW()),
+  (3, '8 rue de la Bibliothèque, Marseille', '+33607080910', 'MEM-2026-003', NOW(), 3, NOW(), NOW()),
+  (4, '15 boulevard des Livres, Nice', '+33611121314', 'MEM-2026-004', NOW(), 4, NOW(), NOW());
 
 INSERT INTO authors (id, firstName, lastName, bio, createdAt, updatedAt)
 VALUES
