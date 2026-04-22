@@ -10,7 +10,17 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pYoussouf2000"]
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-pYoussouf2000",
+        ]
       interval: 10s
       timeout: 5s
       retries: 20
@@ -32,7 +42,13 @@ services:
     ports:
       - "3000:3000"
     healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
       interval: 10s
       timeout: 5s
       retries: 12
@@ -44,7 +60,7 @@ services:
       api:
         condition: service_healthy
     ports:
-      - "5173:5173"
+      - "80:80"
 
   db-seed:
     image: mysql:8.0

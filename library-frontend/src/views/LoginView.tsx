@@ -1,29 +1,37 @@
-import { useState } from 'react';
-import { Library, Mail, Lock, LogIn, AlertCircle } from 'lucide-react';
-import api from '../api';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { Library, Mail, Lock, LogIn, AlertCircle } from "lucide-react";
+import api from "../api";
+import { motion } from "framer-motion";
+
+interface User {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 
 interface LoginViewProps {
-  onLogin: (user: any) => void;
+  onLogin: (user: User) => void;
 }
 
 const LoginView = ({ onLogin }: LoginViewProps) => {
-  const [email, setEmail] = useState('mohamed@gmail.com');
-  const [password, setPassword] = useState('mohamed123');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("mohamed@gmail.com");
+  const [password, setPassword] = useState("mohameddaoud2000*");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
     try {
-      const response = await api.post('/auth/login', { email, password });
-      localStorage.setItem('token', response.data.access_token);
-      localStorage.setItem('user', JSON.stringify(response.data.user));
+      const response = await api.post("/auth/login", { email, password });
+      localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       onLogin(response.data.user);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Identifiants invalides');
+    } catch (err: unknown) {
+      const e = err as { response?: { data?: { message?: string } } };
+      setError(e.response?.data?.message || "Identifiants invalides");
     } finally {
       setLoading(false);
     }
@@ -31,14 +39,14 @@ const LoginView = ({ onLogin }: LoginViewProps) => {
 
   return (
     <div className="login-container">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         className="login-card"
       >
         <div className="login-header">
           <Library className="logo-icon" size={48} />
-          <h1>BiblioAPI</h1>
+          <h1>Gestion de Bibliothèque</h1>
           <p>Connectez-vous pour gérer la bibliothèque</p>
         </div>
 
@@ -54,12 +62,12 @@ const LoginView = ({ onLogin }: LoginViewProps) => {
             <label>Email</label>
             <div className="input-with-icon">
               <Mail size={18} />
-              <input 
-                type="email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="votre@email.com"
-                required 
+                required
               />
             </div>
           </div>
@@ -68,24 +76,26 @@ const LoginView = ({ onLogin }: LoginViewProps) => {
             <label>Mot de passe</label>
             <div className="input-with-icon">
               <Lock size={18} />
-              <input 
-                type="password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                required 
+                required
               />
             </div>
           </div>
 
           <button type="submit" className="btn-login" disabled={loading}>
-            {loading ? <div className="loader small"></div> : <><LogIn size={18} /> Connexion</>}
+            {loading ? (
+              <div className="loader small"></div>
+            ) : (
+              <>
+                <LogIn size={18} /> Connexion
+              </>
+            )}
           </button>
         </form>
-
-        <div className="login-footer">
-          <p>Compte démo : mohamed@gmail.com / mohamed123</p>
-        </div>
       </motion.div>
     </div>
   );

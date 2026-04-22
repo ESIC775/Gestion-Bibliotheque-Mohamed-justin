@@ -15,7 +15,7 @@ INSERT INTO users (id, firstName, lastName, email, password, createdAt, updatedA
 VALUES
   (1, 'Amina', 'Bensaid', 'amina@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
   (2, 'Yanis', 'Dupont', 'yanis@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
-  (3, 'Mohamed', 'Daoud', 'mohamed@gmail.com', '$2b$10$61EQfLnhq9TYPcM14CI9j.qX0x4t24QPu1ekwat6Og..xT.nDaI1G', NOW(), NOW()),
+  (3, 'Mohamed', 'Daoud', 'mohamed@gmail.com', '$2b$10$e8qswdN7BqkGUndoKru0Ne6p0VCViV31wL6FpuNE0OqArJ7bLcv6O', NOW(), NOW()),
   (4, 'Justin', 'Ami', 'justin@gmail.com', '$2b$10$nI6ZG0FMUFflDsaBj7x08.qyRNFr72JHAZd1gWooU3vOVilZpoiN6', NOW(), NOW());
 
 INSERT INTO member_profiles (id, address, phone, membershipNumber, joinedAt, userId, createdAt, updatedAt)
@@ -38,14 +38,14 @@ VALUES
 INSERT INTO categories (id, name, description, createdAt, updatedAt)
 VALUES
   (1, 'Roman', 'Ouvrages de fiction littéraire.', NOW(), NOW()),
-  (2, 'Science-fiction', 'Romans d\'anticipation et d\'aventure scientifique.', NOW(), NOW()),
-  (3, 'Romance', 'Histoires d\'amour et relations sentimentales.', NOW(), NOW());
+  (2, 'Science-fiction', 'Romans d''anticipation et d''aventure scientifique.', NOW(), NOW()),
+  (3, 'Romance', 'Histoires d''amour et relations sentimentales.', NOW(), NOW());
 
 INSERT INTO books (id, title, isbn, publishedYear, totalCopies, availableCopies, summary, coverUrl, categoryId, createdAt, updatedAt)
 VALUES
   (1, 'Les Misérables', '978-2070409189', 1862, 5, 4, 'Roman historique et social.', 'https://covers.openlibrary.org/b/id/12818862-L.jpg', 1, NOW(), NOW()),
   (2, 'Vingt mille lieues sous les mers', '978-2253006324', 1870, 4, 3, 'Aventure sous-marine emblématique.', 'https://covers.openlibrary.org/b/id/8231990-L.jpg', 2, NOW(), NOW()),
-  (3, 'Jamais Plus', '978-2755624734', 2017, 3, 3, 'Lily Bloom s\'installe à Boston...', '/covers/jamais_plus.png', 3, NOW(), NOW()),
+  (3, 'Jamais Plus', '978-2755624734', 2017, 3, 3, 'Lily Bloom s''installe à Boston...', '/covers/jamais_plus.png', 3, NOW(), NOW()),
   (4, 'Kings of Sin', '978-2755670007', 2024, 2, 2, 'Une histoire de sin et de luxe.', '/covers/kings_of_sin.png', 3, NOW(), NOW()),
   (5, 'Just Romance', '978-2755620001', 2023, 2, 2, 'Une histoire de romance passionnée.', '/covers/just_romance.png', 3, NOW(), NOW()),
   (6, 'Loved', '978-2755620002', 2022, 2, 2, 'Un amour inconditionnel.', '/covers/loved.png', 3, NOW(), NOW()),
@@ -63,5 +63,5 @@ VALUES
 
 INSERT INTO loans (id, borrowedAt, dueDate, returnedAt, status, userId, bookId, createdAt, updatedAt)
 VALUES
-  (1, NOW(), DATE_ADD(NOW(), INTERVAL 14 DAY), NULL, 'BORROWED', 1, 1, NOW(), NOW()),
-  (2, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY), NULL, 'BORROWED', 2, 2, NOW(), NOW());
+  (1, NOW(), ADDDATE(NOW(), 14), NULL, 'BORROWED', 1, 1, NOW(), NOW()),
+  (2, NOW(), ADDDATE(NOW(), 7), NULL, 'BORROWED', 2, 2, NOW(), NOW());
