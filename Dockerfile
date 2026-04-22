@@ -1,8 +1,9 @@
-FROM node:20-slim AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 COPY . .
+# Assuming a build script exists (e.g., tsc)
 RUN npm run build
 
 FROM node:20-slim
