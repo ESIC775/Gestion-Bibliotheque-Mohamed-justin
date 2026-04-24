@@ -127,17 +127,32 @@ docker compose up --build
 Docker va télécharger Node (pour le Backend), MySQL (pour la DB), paramétrer ce petit monde dans un espace fermé transparent appelé conteneur, et charger le code de `seed.sql` dans la DB.
 Votre API répondra instantanément aux requêtes sur : `http://localhost:3000`.
 
-### Étape 2 : Démarrer le Frontend (React)
+### Étape 2 : Lancer le Frontend (React)
 
-Ouvrez spécifiquement le terminal dans le sous-dossier `library-frontend`.
+Vous avez deux façons de lancer le frontend selon vos besoins :
 
+#### A) Mode Développement (Vite)
+Idéal pour modifier le code en temps réel. Ouvrez le terminal dans le sous-dossier `library-frontend` :
 ```bash
 cd library-frontend
-npm install           # Uniquement fonctionnel la première fois, ou en cas de crash
+npm install
 npm run dev
 ```
+Accessible sur : `http://localhost:5173`.
 
-Ouvrez votre navigateur au lien généré (En général `http://localhost:5173`). L'interface sera prête à communiquer avec le port 3000 généré à l'étape une, via Axios.
+#### B) Mode Production (Docker + Nginx)
+C'est la méthode la plus robuste. Le frontend est compilé et servi par un serveur **Nginx** haute performance à l'intérieur d'un conteneur Docker.
+```bash
+# Depuis la racine du projet (là où est le docker-compose.yml)
+docker compose up --build frontend
+```
+Accessible sur : `http://localhost:80` (Le port standard du web).
+
+**Pourquoi Nginx ?**
+Dans ce mode, Nginx remplace le serveur de développement de Vite. Il est configuré (via `nginx.conf`) pour :
+1. **Servir les fichiers statiques** très rapidement.
+2. **Gérer le routage SPA** : il redirige toutes les requêtes vers `index.html` pour que React puisse gérer les routes sans erreurs 404.
+3. **Optimiser les performances** avec la compression Gzip.
 
 ---
 
