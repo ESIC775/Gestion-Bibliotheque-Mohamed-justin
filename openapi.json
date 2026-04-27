@@ -10,10 +10,8 @@
             "description": ""
           }
         },
-        "summary": "Vérifier que l’API est disponible",
-        "tags": [
-          "health"
-        ]
+        "summary": "Vérifier que l'API est disponible",
+        "tags": ["health"]
       }
     },
     "/auth/login": {
@@ -39,9 +37,7 @@
           }
         },
         "summary": "Connexion utilisateur et génération de JWT",
-        "tags": [
-          "auth"
-        ]
+        "tags": ["auth"]
       }
     },
     "/users": {
@@ -64,9 +60,7 @@
           }
         },
         "summary": "Créer un utilisateur adhérent",
-        "tags": [
-          "users"
-        ]
+        "tags": ["users"]
       },
       "get": {
         "operationId": "UsersController_findAll",
@@ -77,9 +71,7 @@
           }
         },
         "summary": "Lister les utilisateurs",
-        "tags": [
-          "users"
-        ]
+        "tags": ["users"]
       }
     },
     "/users/{id}": {
@@ -101,9 +93,7 @@
           }
         },
         "summary": "Récupérer un utilisateur par son identifiant",
-        "tags": [
-          "users"
-        ]
+        "tags": ["users"]
       },
       "patch": {
         "operationId": "UsersController_update",
@@ -133,9 +123,7 @@
           }
         },
         "summary": "Mettre à jour un utilisateur",
-        "tags": [
-          "users"
-        ]
+        "tags": ["users"]
       },
       "delete": {
         "operationId": "UsersController_remove",
@@ -155,9 +143,7 @@
           }
         },
         "summary": "Supprimer un utilisateur",
-        "tags": [
-          "users"
-        ]
+        "tags": ["users"]
       }
     },
     "/profiles": {
@@ -180,9 +166,7 @@
           }
         },
         "summary": "Créer un profil adhérent (One-to-One)",
-        "tags": [
-          "profiles"
-        ]
+        "tags": ["profiles"]
       },
       "get": {
         "operationId": "ProfilesController_findAll",
@@ -193,9 +177,7 @@
           }
         },
         "summary": "Lister les profils",
-        "tags": [
-          "profiles"
-        ]
+        "tags": ["profiles"]
       }
     },
     "/profiles/{id}": {
@@ -217,9 +199,7 @@
           }
         },
         "summary": "Récupérer un profil",
-        "tags": [
-          "profiles"
-        ]
+        "tags": ["profiles"]
       },
       "patch": {
         "operationId": "ProfilesController_update",
@@ -249,9 +229,7 @@
           }
         },
         "summary": "Mettre à jour un profil",
-        "tags": [
-          "profiles"
-        ]
+        "tags": ["profiles"]
       },
       "delete": {
         "operationId": "ProfilesController_remove",
@@ -271,9 +249,7 @@
           }
         },
         "summary": "Supprimer un profil",
-        "tags": [
-          "profiles"
-        ]
+        "tags": ["profiles"]
       }
     },
     "/authors": {
@@ -296,9 +272,7 @@
           }
         },
         "summary": "Créer un auteur",
-        "tags": [
-          "authors"
-        ]
+        "tags": ["authors"]
       },
       "get": {
         "operationId": "AuthorsController_findAll",
@@ -309,9 +283,7 @@
           }
         },
         "summary": "Lister les auteurs",
-        "tags": [
-          "authors"
-        ]
+        "tags": ["authors"]
       }
     },
     "/authors/{id}": {
@@ -333,9 +305,7 @@
           }
         },
         "summary": "Récupérer un auteur",
-        "tags": [
-          "authors"
-        ]
+        "tags": ["authors"]
       },
       "patch": {
         "operationId": "AuthorsController_update",
@@ -365,9 +335,7 @@
           }
         },
         "summary": "Mettre à jour un auteur",
-        "tags": [
-          "authors"
-        ]
+        "tags": ["authors"]
       },
       "delete": {
         "operationId": "AuthorsController_remove",
@@ -387,9 +355,7 @@
           }
         },
         "summary": "Supprimer un auteur",
-        "tags": [
-          "authors"
-        ]
+        "tags": ["authors"]
       }
     },
     "/categories": {
@@ -412,9 +378,7 @@
           }
         },
         "summary": "Créer une catégorie",
-        "tags": [
-          "categories"
-        ]
+        "tags": ["categories"]
       },
       "get": {
         "operationId": "CategoriesController_findAll",
@@ -425,9 +389,7 @@
           }
         },
         "summary": "Lister les catégories",
-        "tags": [
-          "categories"
-        ]
+        "tags": ["categories"]
       }
     },
     "/categories/{id}": {
@@ -449,9 +411,7 @@
           }
         },
         "summary": "Récupérer une catégorie",
-        "tags": [
-          "categories"
-        ]
+        "tags": ["categories"]
       },
       "patch": {
         "operationId": "CategoriesController_update",
@@ -481,9 +441,7 @@
           }
         },
         "summary": "Mettre à jour une catégorie",
-        "tags": [
-          "categories"
-        ]
+        "tags": ["categories"]
       },
       "delete": {
         "operationId": "CategoriesController_remove",
@@ -503,9 +461,7 @@
           }
         },
         "summary": "Supprimer une catégorie",
-        "tags": [
-          "categories"
-        ]
+        "tags": ["categories"]
       }
     },
     "/books": {
@@ -528,9 +484,7 @@
           }
         },
         "summary": "Créer un livre avec sa catégorie et ses auteurs (Many-to-Many)",
-        "tags": [
-          "books"
-        ]
+        "tags": ["books"]
       },
       "get": {
         "operationId": "BooksController_findAll",
@@ -541,9 +495,7 @@
           }
         },
         "summary": "Lister les livres",
-        "tags": [
-          "books"
-        ]
+        "tags": ["books"]
       }
     },
     "/books/{id}": {
@@ -565,9 +517,7 @@
           }
         },
         "summary": "Récupérer un livre",
-        "tags": [
-          "books"
-        ]
+        "tags": ["books"]
       },
       "patch": {
         "operationId": "BooksController_update",
@@ -597,9 +547,7 @@
           }
         },
         "summary": "Mettre à jour un livre",
-        "tags": [
-          "books"
-        ]
+        "tags": ["books"]
       },
       "delete": {
         "operationId": "BooksController_remove",
@@ -619,9 +567,7 @@
           }
         },
         "summary": "Supprimer un livre",
-        "tags": [
-          "books"
-        ]
+        "tags": ["books"]
       }
     },
     "/loans": {
@@ -644,9 +590,7 @@
           }
         },
         "summary": "Créer un emprunt de livre",
-        "tags": [
-          "loans"
-        ]
+        "tags": ["loans"]
       },
       "get": {
         "operationId": "LoansController_findAll",
@@ -657,9 +601,7 @@
           }
         },
         "summary": "Lister les emprunts",
-        "tags": [
-          "loans"
-        ]
+        "tags": ["loans"]
       }
     },
     "/loans/{id}": {
@@ -681,9 +623,7 @@
           }
         },
         "summary": "Récupérer un emprunt",
-        "tags": [
-          "loans"
-        ]
+        "tags": ["loans"]
       },
       "patch": {
         "operationId": "LoansController_update",
@@ -713,9 +653,7 @@
           }
         },
         "summary": "Mettre à jour un emprunt (ex: retour du livre)",
-        "tags": [
-          "loans"
-        ]
+        "tags": ["loans"]
       },
       "delete": {
         "operationId": "LoansController_remove",
@@ -735,9 +673,7 @@
           }
         },
         "summary": "Supprimer un emprunt",
-        "tags": [
-          "loans"
-        ]
+        "tags": ["loans"]
       }
     }
   },
@@ -792,10 +728,7 @@
             "example": "admin123"
           }
         },
-        "required": [
-          "email",
-          "password"
-        ]
+        "required": ["email", "password"]
       },
       "CreateUserDto": {
         "type": "object",
@@ -821,13 +754,7 @@
             "example": "+33601020304"
           }
         },
-        "required": [
-          "firstName",
-          "lastName",
-          "email",
-          "address",
-          "phone"
-        ]
+        "required": ["firstName", "lastName", "email", "address", "phone"]
       },
       "UpdateUserDto": {
         "type": "object",
@@ -927,10 +854,7 @@
             "example": "Écrivain français majeur du XIXe siècle."
           }
         },
-        "required": [
-          "firstName",
-          "lastName"
-        ]
+        "required": ["firstName", "lastName"]
       },
       "UpdateAuthorDto": {
         "type": "object",
@@ -961,9 +885,7 @@
             "example": "Ouvrages de fiction littéraire."
           }
         },
-        "required": [
-          "name"
-        ]
+        "required": ["name"]
       },
       "UpdateCategoryDto": {
         "type": "object",
@@ -1014,10 +936,7 @@
             "example": 1
           },
           "authorIds": {
-            "example": [
-              1,
-              2
-            ],
+            "example": [1, 2],
             "type": "array",
             "items": {
               "type": "string"
@@ -1070,10 +989,7 @@
             "example": 1
           },
           "authorIds": {
-            "example": [
-              1,
-              2
-            ],
+            "example": [1, 2],
             "type": "array",
             "items": {
               "type": "string"
@@ -1097,11 +1013,7 @@
             "example": 1
           }
         },
-        "required": [
-          "dueDate",
-          "userId",
-          "bookId"
-        ]
+        "required": ["dueDate", "userId", "bookId"]
       },
       "UpdateLoanDto": {
         "type": "object",
@@ -1125,10 +1037,7 @@
           "status": {
             "type": "string",
             "example": "RETURNED",
-            "enum": [
-              "BORROWED",
-              "RETURNED"
-            ]
+            "enum": ["BORROWED", "RETURNED"]
           }
         }
       }

@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
@@ -22,6 +22,7 @@ export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Créer un livre avec sa catégorie et ses auteurs (Many-to-Many)' })
   create(@Body() createBookDto: CreateBookDto) {
@@ -41,6 +42,7 @@ export class BooksController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Mettre à jour un livre' })
   update(
@@ -51,6 +53,7 @@ export class BooksController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer un livre' })
   remove(@Param('id', ParseIntPipe) id: number) {

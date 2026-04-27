@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthorsService } from './authors.service';
 import { CreateAuthorDto } from './dto/create-author.dto';
 import { UpdateAuthorDto } from './dto/update-author.dto';
@@ -21,6 +21,7 @@ export class AuthorsController {
   constructor(private readonly authorsService: AuthorsService) {}
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Créer un auteur' })
   create(@Body() createAuthorDto: CreateAuthorDto) {
@@ -40,6 +41,7 @@ export class AuthorsController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Mettre à jour un auteur' })
   update(
@@ -50,6 +52,7 @@ export class AuthorsController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer un auteur' })
   remove(@Param('id', ParseIntPipe) id: number) {

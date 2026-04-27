@@ -19,13 +19,13 @@ export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
   @Post()
-  @ApiOperation({ summary: 'Créer une catégorie' })
+  @ApiOperation({ summary: 'Créer une catégorie (One-to-Many avec les livres)' })
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.create(createCategoryDto);
   }
 
   @Get()
-  @ApiOperation({ summary: 'Lister les catégories' })
+  @ApiOperation({ summary: 'Lister les catégories (One-to-Many avec les livres)' })
   findAll() {
     return this.categoriesService.findAll();
   }

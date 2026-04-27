@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { LoansService } from './loans.service';
 import { CreateLoanDto } from './dto/create-loan.dto';
 import { UpdateLoanDto } from './dto/update-loan.dto';
@@ -21,8 +21,9 @@ export class LoansController {
   constructor(private readonly loansService: LoansService) {}
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Post()
-  @ApiOperation({ summary: 'Créer un emprunt de livre' })
+  @ApiOperation({ summary: 'Créer un emprunt de livre (One-to-Many avec User et Book)' })
   create(@Body() createLoanDto: CreateLoanDto) {
     return this.loansService.create(createLoanDto);
   }
@@ -40,6 +41,7 @@ export class LoansController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Mettre à jour un emprunt (ex: retour du livre)' })
   update(
@@ -50,6 +52,7 @@ export class LoansController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer un emprunt' })
   remove(@Param('id', ParseIntPipe) id: number) {

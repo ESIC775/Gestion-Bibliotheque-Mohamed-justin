@@ -1,8 +1,8 @@
-import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { AppModule } from './app.module';
-import { SequelizeExceptionFilter } from './common/filters/sequelize-exception.filter';
+import { ValidationPipe } from "@nestjs/common";
+import { NestFactory } from "@nestjs/core";
+import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
+import { AppModule } from "./app.module";
+import { SequelizeExceptionFilter } from "./common/filters/sequelize-exception.filter";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -19,22 +19,22 @@ async function bootstrap() {
   app.useGlobalFilters(new SequelizeExceptionFilter());
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('API Bibliothèque')
+    .setTitle("API Bibliothèque")
     .setDescription(
-      'API RESTful de gestion de bibliothèque réalisée avec NestJS, Sequelize et PostgreSQL.',
+      "API RESTful de gestion de bibliothèque réalisée avec NestJS, Sequelize et PostgreSQL.",
     )
-    .setVersion('1.0.0')
-    .addTag('health')
-    .addTag('users')
-    .addTag('profiles')
-    .addTag('authors')
-    .addTag('categories')
-    .addTag('books')
-    .addTag('loans')
+    .setVersion("1.0.0")
+    .addTag("health")
+    .addTag("users")
+    .addTag("authors")
+    .addTag("categories")
+    .addTag("books")
+    .addTag("loans")
+    .addBearerAuth() // Ajoute le bouton "Authorize" dans Swagger
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('docs', app, document);
+  SwaggerModule.setup("docs", app, document);
 
   const port = Number(process.env.PORT ?? 3000);
   await app.listen(port);
