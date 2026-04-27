@@ -10,6 +10,7 @@ import {
   LayoutDashboard,
   RefreshCcw,
   LogOut,
+  CalendarDays,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import api from "./api";
@@ -21,8 +22,9 @@ import AuthorsView from "./views/AuthorsView";
 import UsersView from "./views/UsersView";
 import LoansView from "./views/LoansView";
 import LoginView from "./views/LoginView";
+import ReservationsView from "./views/ReservationsView";
 
-type View = "dashboard" | "books" | "authors" | "users" | "loans";
+type View = "dashboard" | "books" | "authors" | "users" | "loans" | "reservations";
 
 interface AppUser {
   id: number;
@@ -36,6 +38,15 @@ interface Loan {
   borrowedAt: string;
   dueDate: string;
   returnedAt: string | null;
+  userId: number;
+  bookId: number;
+  user?: { firstName: string; lastName: string };
+  book?: { title: string };
+}
+interface Reservation {
+  id: number;
+  status: "PENDING" | "CANCELLED" | "COMPLETED";
+  reservedAt: string;
   userId: number;
   bookId: number;
   user?: { firstName: string; lastName: string };
@@ -55,6 +66,7 @@ interface AppData {
     profile?: { address: string; phone: string; membershipNumber: string };
   }[];
   loans: Loan[];
+  reservations: Reservation[];
   categories: { id: number; name: string }[];
 }
 
@@ -66,6 +78,7 @@ function App() {
     authors: [],
     users: [],
     loans: [],
+    reservations: [],
     categories: [],
   });
   const [loading, setLoading] = useState(true);
@@ -81,12 +94,13 @@ function App() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const [booksRes, authorsRes, usersRes, loansRes, catsRes] =
+      const [booksRes, authorsRes, usersRes, loansRes, resRes, catsRes] =
         await Promise.all([
           api.get("/books"),
           api.get("/authors"),
           api.get("/users"),
           api.get("/loans"),
+          api.get("/reservations"),
           api.get("/categories"),
         ]);
       setData({
@@ -94,6 +108,7 @@ function App() {
         authors: authorsRes.data,
         users: usersRes.data,
         loans: loansRes.data,
+        reservations: resRes.data,
         categories: catsRes.data,
       });
     } catch (error) {
@@ -155,6 +170,7 @@ function App() {
           <SidebarItem id="authors" icon={UserCircle} label="Auteurs" />
           <SidebarItem id="users" icon={Users} label="Membres" />
           <SidebarItem id="loans" icon={Clock} label="Emprunts" />
+          <SidebarItem id="reservations" icon={CalendarDays} label="Réservations" />
         </nav>
 
         <div className="sidebar-footer">
@@ -181,7 +197,9 @@ function App() {
                   ? "Gestion des Auteurs"
                   : currentView === "users"
                     ? "Gestion des Membres"
-                    : "Gestion des Emprunts"}
+                    : currentView === "loans"
+                      ? "Gestion des Emprunts"
+                      : "Gestion des Réservations"}
           </h2>
           <div className="header-actions">
             <div className="search-bar">
@@ -229,6 +247,9 @@ function App() {
                 {currentView === "loans" && (
                   <LoansView data={data} onRefresh={fetchData} />
                 )}
+                {currentView === "reservations" && (
+                  <ReservationsView data={data} onRefresh={fetchData} />
+                )}
               </motion.div>
             )}
           </AnimatePresence>
@@ -263,6 +284,12 @@ const DashboardView = ({ data }: { data: AppData }) => (
       label="Retours effectués"
       count={data.loans.filter((l: Loan) => l.status === "RETURNED").length}
       color="#8b5cf6"
+    />
+    <StatCard
+      icon={CalendarDays}
+      label="Réservations"
+      count={data.reservations.filter((r: any) => r.status === "PENDING").length}
+      color="#ec4899"
     />
   </div>
 );

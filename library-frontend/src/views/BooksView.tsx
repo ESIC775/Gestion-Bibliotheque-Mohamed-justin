@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Plus, Edit, Trash2, BookOpen, Search } from "lucide-react";
+import { Plus, Edit, Trash2, BookOpen, Search, CalendarDays } from "lucide-react";
 import api from "../api";
 import Modal from "../components/Modal";
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,6 +31,7 @@ interface BooksData {
   books: Book[];
   authors: AuthorOption[];
   categories: CategoryOption[];
+  users: UserOption[];
 }
 
 const BooksView = ({
@@ -42,6 +43,8 @@ const BooksView = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingBook, setEditingBook] = useState<Book | null>(null);
+  const [reservingBook, setReservingBook] = useState<Book | null>(null);
+  const [isResModalOpen, setIsResModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [formData, setFormData] = useState({
     title: "",
@@ -53,6 +56,10 @@ const BooksView = ({
     coverUrl: "",
     categoryId: data.categories[0]?.id || 1,
     authorIds: [data.authors[0]?.id || 1],
+  });
+
+  const [resFormData, setResFormData] = useState({
+    userId: data.users[0]?.id || 1,
   });
 
   const filteredBooks = useMemo(() => {
@@ -120,6 +127,25 @@ const BooksView = ({
       alert(
         "Erreur: " + (Array.isArray(msg) ? msg.join(", ") : msg || "Inconnue"),
       );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleReserve = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting || !reservingBook) return;
+    setIsSubmitting(true);
+    try {
+      await api.post("/reservations", {
+        bookId: reservingBook.id,
+        userId: resFormData.userId,
+      });
+      setIsResModalOpen(false);
+      alert("Réservation effectuée avec succès !");
+      onRefresh();
+    } catch (error: any) {
+      alert("Erreur lors de la réservation: " + (error.response?.data?.message || "Inconnue"));
     } finally {
       setIsSubmitting(false);
     }
@@ -218,6 +244,17 @@ const BooksView = ({
                     title="Supprimer"
                   >
                     <Trash2 size={16} />
+                  </button>
+                  <button
+                    className="btn-icon reserve"
+                    onClick={() => {
+                      setReservingBook(book);
+                      setIsResModalOpen(true);
+                    }}
+                    title="Réserver"
+                    style={{ color: "#ec4899" }}
+                  >
+                    <CalendarDays size={16} />
                   </button>
                 </div>
               </div>
@@ -375,6 +412,49 @@ const BooksView = ({
               {editingBook
                 ? "Enregistrer les modifications"
                 : "Enregistrer le Livre"}
+            </button>
+          </div>
+        </form>
+      </Modal>
+
+      <Modal
+        isOpen={isResModalOpen}
+        onClose={() => setIsResModalOpen(false)}
+        title={`Réserver : ${reservingBook?.title}`}
+      >
+        <form onSubmit={handleReserve} className="book-form">
+          <div className="form-group">
+            <label>Choisir le membre qui réserve</label>
+            <select
+              value={resFormData.userId}
+              onChange={(e) =>
+                setResFormData({ ...resFormData, userId: parseInt(e.target.value) })
+              }
+              required
+            >
+              {data.users.map((u: UserOption) => (
+                <option key={u.id} value={u.id}>
+                  {u.firstName} {u.lastName} ({u.id})
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-actions">
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={() => setIsResModalOpen(false)}
+              disabled={isSubmitting}
+            >
+              Annuler
+            </button>
+            <button
+              type="submit"
+              className="btn-primary"
+              disabled={isSubmitting}
+              style={{ backgroundColor: "#ec4899", borderColor: "#ec4899" }}
+            >
+              Confirmer la Réservation
             </button>
           </div>
         </form>

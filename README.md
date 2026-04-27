@@ -80,7 +80,7 @@ Dans les dossiers sources du Backend (comme `src/books`), la logique suit l'arch
 
 - **Un Controller (`x.controller.ts`)** : Il ne s'occupe _que_ d'écouter les routes HTTP (ex: `GET /books`).
 - **Un Service (`x.service.ts`)** : Il concentre toute l'intelligence algorithmique et la modification base de données.
-- **Des Modèles (`x.model.ts`)** : Les schémas de vos tables MySQL Sequelize avec toutes leurs relations.
+- **Des Modèles (`x.model.ts`)** : Les schémas de vos tables MySQL Sequelize (Users, Books, Loans, Reservations, etc.).
 - **Des DTO (`/dto`)** : Data Transfer Object définissant strictement les JSON que l'utilisateur a le droit d'envoyer pour la création ou l'update de l'entité.
 
 ---
@@ -102,7 +102,7 @@ Ce projet respecte religieusement toutes les contraintes de base de données exi
 - **Cardinalités :** `Category (0,n) ── (1,1) Book` (Une catégorie contient de 0 à _n_ livres, un livre n'a qu'une seule catégorie).
 - Géré par `@HasMany` et `@BelongsTo`.
 - Une catégorie regroupe de nombreux livres. Mais un livre n'appartient qu'à une seule catégorie.
-- **Même principe pour : `Book` ↔ `Loan` et `User` ↔ `Loan`** (Un profil réalise plusieurs emprunts divers).
+- **Même principe pour : `Book` ↔ `Loan`, `User` ↔ `Loan`, `Book` ↔ `Reservation` et `User` ↔ `Reservation`** (Un membre réalise plusieurs emprunts ou réservations).
 
 ### 🔗 Relation Many-to-Many
 
