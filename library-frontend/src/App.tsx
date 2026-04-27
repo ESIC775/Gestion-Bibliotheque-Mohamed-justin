@@ -99,10 +99,9 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
+    // On ne récupère plus l'utilisateur du localStorage pour forcer la connexion
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     fetchData();
   }, []);
 
