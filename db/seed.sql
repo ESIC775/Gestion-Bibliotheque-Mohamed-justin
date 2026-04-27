@@ -16,7 +16,7 @@ INSERT INTO users (id, firstName, lastName, email, password, createdAt, updatedA
 VALUES
   (1, 'Amina', 'Bensaid', 'amina@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
   (2, 'Yanis', 'Dupont', 'yanis@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
-  (3, 'Mohamed', 'Daoud', 'mohamed@gmail.com', '$2b$10$wFUyUzZYgWnyNfNDn0cpcu0GW8kykXFoqHtBJEvFQ/IENFP1DWPIG', NOW(), NOW()),
+  (3, 'Mohamed', 'Daoud', 'mohamed@gmail.com', '$2b$10$gU36FZmptRmHFJXicBYLRuWlEES6F5jG0Gf.JxDpqbUIi8/d3TzwC', NOW(), NOW()),
   (4, 'Justin', 'Ami', 'justin@gmail.com', '$2b$10$2dFrGp//fDUdPrDXkNf33Oe0TdEOVh41ZF5mF2kBLEq7wS5s2zSte', NOW(), NOW()),
   (5, 'Aliou', 'Diallo', 'Aliou@gmail.com', '$2b$10$Nan7EDorK27IkwwS2QNvBOgLMOtHv9/wTn88bLNPpLO2SAKHGNYY6', NOW(), NOW());
 
