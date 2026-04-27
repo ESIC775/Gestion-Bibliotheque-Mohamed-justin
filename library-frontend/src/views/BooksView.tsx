@@ -31,7 +31,7 @@ interface BooksData {
   books: Book[];
   authors: AuthorOption[];
   categories: CategoryOption[];
-  users: UserOption[];
+  users: any[];
 }
 
 const BooksView = ({
@@ -432,7 +432,7 @@ const BooksView = ({
               }
               required
             >
-              {data.users.map((u: UserOption) => (
+              {data.users.map((u: any) => (
                 <option key={u.id} value={u.id}>
                   {u.firstName} {u.lastName} ({u.id})
                 </option>

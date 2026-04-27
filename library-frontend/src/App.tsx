@@ -22,9 +22,15 @@ import AuthorsView from "./views/AuthorsView";
 import UsersView from "./views/UsersView";
 import LoansView from "./views/LoansView";
 import LoginView from "./views/LoginView";
-import ReservationsView from "./views/ReservationsView";
+import ReservationsView from "./views/ReservationsView.tsx";
 
-type View = "dashboard" | "books" | "authors" | "users" | "loans" | "reservations";
+type View =
+  | "dashboard"
+  | "books"
+  | "authors"
+  | "users"
+  | "loans"
+  | "reservations";
 
 interface AppUser {
   id: number;
@@ -54,15 +60,24 @@ interface Reservation {
 }
 interface AppData {
   books: {
-    id: number; title: string; isbn: string; publishedYear: number;
-    totalCopies: number; availableCopies: number; summary: string;
-    categoryId: number; coverUrl?: string;
+    id: number;
+    title: string;
+    isbn: string;
+    publishedYear: number;
+    totalCopies: number;
+    availableCopies: number;
+    summary: string;
+    categoryId: number;
+    coverUrl?: string;
     category?: { name: string };
     authors?: { id: number; firstName: string; lastName: string }[];
   }[];
   authors: { id: number; firstName: string; lastName: string; bio: string }[];
   users: {
-    id: number; firstName: string; lastName: string; email: string;
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
     profile?: { address: string; phone: string; membershipNumber: string };
   }[];
   loans: Loan[];
@@ -170,7 +185,11 @@ function App() {
           <SidebarItem id="authors" icon={UserCircle} label="Auteurs" />
           <SidebarItem id="users" icon={Users} label="Membres" />
           <SidebarItem id="loans" icon={Clock} label="Emprunts" />
-          <SidebarItem id="reservations" icon={CalendarDays} label="Réservations" />
+          <SidebarItem
+            id="reservations"
+            icon={CalendarDays}
+            label="Réservations"
+          />
         </nav>
 
         <div className="sidebar-footer">
@@ -288,7 +307,9 @@ const DashboardView = ({ data }: { data: AppData }) => (
     <StatCard
       icon={CalendarDays}
       label="Réservations"
-      count={data.reservations.filter((r: any) => r.status === "PENDING").length}
+      count={
+        data.reservations.filter((r: any) => r.status === "PENDING").length
+      }
       color="#ec4899"
     />
   </div>
