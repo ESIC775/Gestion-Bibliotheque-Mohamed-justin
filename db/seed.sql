@@ -8,6 +8,7 @@ TRUNCATE TABLE member_profiles;
 TRUNCATE TABLE authors;
 TRUNCATE TABLE categories;
 TRUNCATE TABLE users;
+TRUNCATE TABLE reservations;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- Insertion des données propres
@@ -16,14 +17,16 @@ VALUES
   (1, 'Amina', 'Bensaid', 'amina@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
   (2, 'Yanis', 'Dupont', 'yanis@example.com', '$2b$10$bayzXtFz1yXioAok53cKSuHICNEmYw3ePTSXp/7JCisjMur9TeY8e', NOW(), NOW()),
   (3, 'Mohamed', 'Daoud', 'mohamed@gmail.com', '$2b$10$wFUyUzZYgWnyNfNDn0cpcu0GW8kykXFoqHtBJEvFQ/IENFP1DWPIG', NOW(), NOW()),
-  (4, 'Justin', 'Ami', 'justin@gmail.com', '$2b$10$2dFrGp//fDUdPrDXkNf33Oe0TdEOVh41ZF5mF2kBLEq7wS5s2zSte', NOW(), NOW());
+  (4, 'Justin', 'Ami', 'justin@gmail.com', '$2b$10$2dFrGp//fDUdPrDXkNf33Oe0TdEOVh41ZF5mF2kBLEq7wS5s2zSte', NOW(), NOW()),
+  (5, 'Aliou', 'Diallo', 'Aliou@gmail.com', '$2b$10$Nan7EDorK27IkwwS2QNvBOgLMOtHv9/wTn88bLNPpLO2SAKHGNYY6', NOW(), NOW());
 
 INSERT INTO member_profiles (id, address, phone, membershipNumber, joinedAt, userId, createdAt, updatedAt)
 VALUES
   (1, '12 rue des Fleurs, Paris', '+33601020304', 'MEM-2026-001', NOW(), 1, NOW(), NOW()),
   (2, '5 avenue du Livre, Lyon', '+33605060708', 'MEM-2026-002', NOW(), 2, NOW(), NOW()),
   (3, '8 rue de la Bibliothèque, Marseille', '+33607080910', 'MEM-2026-003', NOW(), 3, NOW(), NOW()),
-  (4, '15 boulevard des Livres, Nice', '+33611121314', 'MEM-2026-004', NOW(), 4, NOW(), NOW());
+  (4, '15 boulevard des Livres, Nice', '+33611121314', 'MEM-2026-004', NOW(), 4, NOW(), NOW()),
+  (5, '20 rue du Savoir, Bordeaux', '+33622232425', 'MEM-2026-005', NOW(), 5, NOW(), NOW());
 
 INSERT INTO authors (id, firstName, lastName, bio, createdAt, updatedAt)
 VALUES
@@ -65,3 +68,9 @@ INSERT INTO loans (id, borrowedAt, dueDate, returnedAt, status, userId, bookId, 
 VALUES
   (1, NOW(), ADDDATE(NOW(), 14), NULL, 'BORROWED', 1, 1, NOW(), NOW()),
   (2, NOW(), ADDDATE(NOW(), 7), NULL, 'BORROWED', 2, 2, NOW(), NOW());
+
+INSERT INTO reservations (id, reservedAt, status, userId, bookId, createdAt, updatedAt)
+VALUES
+  (1, NOW(), 'PENDING', 3, 1, NOW(), NOW()),
+  (2, NOW(), 'PENDING', 4, 2, NOW(), NOW()),
+  (3, NOW(), 'PENDING', 1, 3, NOW(), NOW());
