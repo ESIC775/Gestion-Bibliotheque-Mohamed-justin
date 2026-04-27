@@ -9,6 +9,7 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 import { MemberProfile } from '../../profiles/models/member-profile.model';
 import { Loan } from '../../loans/models/loan.model';
+import { Reservation } from '../../reservations/models/reservation.model';
 
 @Table({ tableName: 'users' })
 export class User extends Model {
@@ -43,4 +44,8 @@ export class User extends Model {
   @ApiProperty({ type: () => [Loan] })
   @HasMany(() => Loan)
   declare loans: Loan[];
+
+  @ApiProperty({ type: () => [Reservation] })
+  @HasMany(() => Reservation)
+  declare reservations: Reservation[];
 }

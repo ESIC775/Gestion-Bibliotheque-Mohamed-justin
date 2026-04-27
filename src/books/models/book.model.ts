@@ -13,6 +13,7 @@ import { Category } from '../../categories/models/category.model';
 import { Author } from '../../authors/models/author.model';
 import { BookAuthor } from './book-author.model';
 import { Loan } from '../../loans/models/loan.model';
+import { Reservation } from '../../reservations/models/reservation.model';
 
 @Table({ tableName: 'books' })
 export class Book extends Model {
@@ -68,4 +69,8 @@ export class Book extends Model {
   @ApiProperty({ type: () => [Loan] })
   @HasMany(() => Loan)
   declare loans: Loan[];
+
+  @ApiProperty({ type: () => [Reservation] })
+  @HasMany(() => Reservation)
+  declare reservations: Reservation[];
 }

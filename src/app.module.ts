@@ -15,6 +15,8 @@ import { Category } from './categories/models/category.model';
 import { Book } from './books/models/book.model';
 import { BookAuthor } from './books/models/book-author.model';
 import { Loan } from './loans/models/loan.model';
+import { Reservation } from './reservations/models/reservation.model';
+import { ReservationsModule } from './reservations/reservations.module';
 
 import { AuthModule } from './auth/auth.module';
 
@@ -34,7 +36,7 @@ import { AuthModule } from './auth/auth.module';
             autoLoadModels: true,
             synchronize: true,
             logging: false,
-            models: [User, MemberProfile, Author, Category, Book, BookAuthor, Loan],
+            models: [User, MemberProfile, Author, Category, Book, BookAuthor, Loan, Reservation],
           };
         }
 
@@ -50,7 +52,7 @@ import { AuthModule } from './auth/auth.module';
           logging: console.log,
           retryAttempts: 10,
           retryDelay: 3000,
-          models: [User, MemberProfile, Author, Category, Book, BookAuthor, Loan],
+          models: [User, MemberProfile, Author, Category, Book, BookAuthor, Loan, Reservation],
         };
       },
     }),
@@ -60,6 +62,7 @@ import { AuthModule } from './auth/auth.module';
     CategoriesModule,
     BooksModule,
     LoansModule,
+    ReservationsModule,
   ],
   controllers: [HealthController],
 })
