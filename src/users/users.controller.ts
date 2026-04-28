@@ -39,8 +39,6 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Mettre à jour un utilisateur' })
   update(
@@ -50,8 +48,6 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer un utilisateur' })
   remove(@Param('id', ParseIntPipe) id: number) {

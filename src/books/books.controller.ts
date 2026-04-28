@@ -21,8 +21,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class BooksController {
   constructor(private readonly booksService: BooksService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Créer un livre avec sa catégorie et ses auteurs (Many-to-Many)' })
   create(@Body() createBookDto: CreateBookDto) {
@@ -41,8 +39,6 @@ export class BooksController {
     return this.booksService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Mettre à jour un livre' })
   update(
@@ -52,8 +48,6 @@ export class BooksController {
     return this.booksService.update(id, updateBookDto);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer un livre' })
   remove(@Param('id', ParseIntPipe) id: number) {

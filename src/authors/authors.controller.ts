@@ -20,8 +20,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class AuthorsController {
   constructor(private readonly authorsService: AuthorsService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Créer un auteur' })
   create(@Body() createAuthorDto: CreateAuthorDto) {
@@ -40,8 +38,6 @@ export class AuthorsController {
     return this.authorsService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Mettre à jour un auteur' })
   update(
@@ -51,8 +47,6 @@ export class AuthorsController {
     return this.authorsService.update(id, updateAuthorDto);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer un auteur' })
   remove(@Param('id', ParseIntPipe) id: number) {

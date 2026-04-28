@@ -20,8 +20,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class LoansController {
   constructor(private readonly loansService: LoansService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Créer un emprunt de livre (One-to-Many avec User et Book)' })
   create(@Body() createLoanDto: CreateLoanDto) {
@@ -40,8 +38,6 @@ export class LoansController {
     return this.loansService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Patch(':id')
   @ApiOperation({ summary: 'Mettre à jour un emprunt (ex: retour du livre)' })
   update(
@@ -51,8 +47,6 @@ export class LoansController {
     return this.loansService.update(id, updateLoanDto);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer un emprunt' })
   remove(@Param('id', ParseIntPipe) id: number) {

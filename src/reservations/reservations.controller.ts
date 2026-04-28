@@ -19,8 +19,6 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class ReservationsController {
   constructor(private readonly reservationsService: ReservationsService) {}
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Post()
   @ApiOperation({ summary: 'Créer une réservation (One-to-Many avec User et Book)' })
   create(@Body() createReservationDto: CreateReservationDto) {
@@ -39,16 +37,12 @@ export class ReservationsController {
     return this.reservationsService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Patch(':id/cancel')
   @ApiOperation({ summary: 'Annuler une réservation' })
   cancel(@Param('id', ParseIntPipe) id: number) {
     return this.reservationsService.cancel(id);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @ApiBearerAuth()
   @Delete(':id')
   @ApiOperation({ summary: 'Supprimer une réservation' })
   remove(@Param('id', ParseIntPipe) id: number) {
