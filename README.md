@@ -220,7 +220,9 @@ _(En coulisses: C'est le petit script magique `npm run export-openapi` défini d
 Ce projet a été conçu en respectant les standards de développement professionnel demandés :
 
 - **Structuration modulaire** : Utilisation de NestJS pour séparer les fonctionnalités (Livres, Membres, Emprunts) en modules indépendants et réutilisables.
-- **Architecture Contrôleur/Service** : Séparation stricte entre la réception des requêtes (Controllers) et la logique métier (Services).
+- **Architecture API RESTful** : Utilisation stricte des standards REST (JSON, codes de statut HTTP appropriés, méthodes GET/POST/PATCH/DELETE).
+- **Persistance des données** : Stockage sécurisé et durable via une base de données **MySQL** pilotée par l'ORM **Sequelize**.
+- **Gestion des erreurs** : Mise en œuvre de filtres d'exception globaux pour capturer et formater proprement les erreurs (ex: erreurs de validation, conflits de base de données).
 - **Documentation API** : Intégration complète de **Swagger** (OpenAPI) pour documenter et tester les points de terminaison en temps réel.
 - **Tests automatisés** : Mise en place de tests unitaires avec **Jest** pour garantir la robustesse du code.
 - **Gestion de versions** : Utilisation rigoureuse de **Git** avec des messages de commit clairs pour assurer le suivi du développement. Chaque fonctionnalité (Auth, CRUD, Docker, Tests) a fait l'objet d'un commit spécifique pour garder un historique propre.
