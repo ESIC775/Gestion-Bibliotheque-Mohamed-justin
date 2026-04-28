@@ -19,9 +19,8 @@ async function bootstrap() {
   app.useGlobalFilters(new SequelizeExceptionFilter());
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle("Documentation API Bibliothèque")
-    .setDescription("")
-    .setVersion("1.0.0")
+    .setTitle("Gestion Bibliothèque")
+    .setVersion("1.0")
     .addTag("health")
     .addTag("users")
     .addTag("authors")
