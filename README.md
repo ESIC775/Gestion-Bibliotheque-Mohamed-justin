@@ -2,6 +2,16 @@
 
 Ce projet est une application complète (Frontend et Backend) conçue pour répondre aux critères de la SAE « Développement & Déploiement d’une Application Web RESTful Conteneurisée ». Il permet la gestion centralisée d'une bibliothèque : adhérents, livres, emprunts, auteurs, membres, etc.
 
+## 🚀 Compétences Techniques Démontrées
+
+Pour répondre aux exigences académiques, ce projet met en œuvre :
+- **Structuration modulaire** : Code organisé en modules NestJS clairs et isolés.
+- **Architecture API REST** : Usage strict de contrôleurs pour exposer des services JSON.
+- **Documentation OpenAPI** : Documentation interactive complète via **Swagger**.
+- **Tests automatisés** : Suite de tests unitaires avec **Jest**.
+- **Gestion de versions** : Suivi du projet avec **Git**.
+- **Conteneurisation (Docker)** : Déploiement via Docker Compose pour une portabilité totale.
+
 ## 1) Contexte du projet et Résumé des fonctionnalités
 
 L'application permet de :
