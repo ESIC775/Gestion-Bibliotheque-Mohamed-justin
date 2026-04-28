@@ -70,27 +70,28 @@ Gestion-Bibliotheque-Mohamed-justin/
 │
 ├── src/                            <-- ⚙️ PARTIE BACKEND (Dossier NestJS)
 │   ├── app.module.ts               # Module racine du backend
-│   ├── main.ts                     # Configuration du serveur (Port, Activation globales : CORS, Swagger)
+│   ├── main.ts                     # Configuration du serveur (Port, Swagger)
 │   ├── common/                     # Filtres (ex: exceptions) gérés globalement
 │   ├── auth/                       # Module d'authentification
-│   │
-│   ├── authors/                    # Entité de gestion des auteurs
-│   ├── books/                      # Entité de gestion des livres (Logique de stock, DTOs, Covers)
-│   ├── categories/                 # Entité de gestion des catégories / genres
-│   ├── loans/                      # Entité de gestion des emprunts
-│   ├── profiles/                   # Entité de gestion des profils détaillés
-│   └── users/                      # Entité de gestion des adhérents / comptes de base
+│   ├── authors/                    # Gestion des auteurs (avec tests unitaires .spec.ts)
+│   ├── books/                      # Gestion des livres (Stock, DTOs, Covers)
+│   ├── categories/                 # Gestion des catégories / genres
+│   ├── loans/                      # Gestion des emprunts
+│   ├── profiles/                   # Gestion des profils détaillés
+│   └── users/                      # Gestion des adhérents / comptes
+│
+├── test/                           <-- 🧪 PARTIE TESTS (Dossier Jest)
+│   ├── app.e2e-spec.ts             # Tests de bout en bout (scénarios réels)
+│   └── jest-e2e.json               # Configuration Jest pour le mode E2E
 │
 ├── docker/
 │   └── db/
-│       └── seed.sql                # Jeu de données SQL initial (Livres de test injectés au démarrage)
+│       └── seed.sql                # Jeu de données SQL initial
 │
-├── docker-compose.yml              # Fichier d'orchestration Docker (Backend server + Database)
-├── Dockerfile                      # Image définissant l'environnement de déploiement de l'API Node.js
-├── export-openapi.ts               # Script générant le fichier JSON local pour configurer Postman
-├── openapi.json                    # Résultat du script OpenAPI (à importer dans Postman !)
-├── package.json                    # Dépendances Node.js du Backend
-└── README.md                       # Ce fichier de documentation intégrale
+├── docker-compose.yml              # Orchestration Docker (API + Database)
+├── Dockerfile                      # Environnement de déploiement Node.js
+├── package.json                    # Dépendances Node.js
+└── README.md                       # Documentation intégrale
 ```
 
 Dans les dossiers sources du Backend (comme `src/books`), la logique suit l'architecture NestJS :
