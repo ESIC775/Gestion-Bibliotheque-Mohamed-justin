@@ -15,7 +15,12 @@ Pour répondre aux exigences académiques, ce projet met en œuvre :
 
 ## 1) Contexte du projet et Résumé des fonctionnalités
 
-L'application permet de :
+Ce projet s'inscrit dans le cadre de la SAE **DDAW (Développement et Déploiement d'Applications Web)**. Il a permis de mobiliser des compétences avancées en :
+- **Architecture logicielle** : Conception d'un système robuste et évolutif.
+- **Programmation orientée services** : Création d'une API REST performante avec NestJS.
+- **Outillage DevOps** : Conteneurisation (Docker), scripts de déploiement (Render/Koyeb), documentation (Swagger) et tests automatisés (Jest).
+
+L'application permet la gestion centralisée d'une bibliothèque :
 
 - **Gérer des adhérents et leurs profils détaillés** (1-1).
 - **Gérer un catalogue de livres, classés par catégories et auteurs** (1-N et N-N) avec la gestion des images de couverture.
