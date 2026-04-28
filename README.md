@@ -223,8 +223,17 @@ Ce projet a été conçu en respectant les standards de développement professio
 - **Architecture Contrôleur/Service** : Séparation stricte entre la réception des requêtes (Controllers) et la logique métier (Services).
 - **Documentation API** : Intégration complète de **Swagger** (OpenAPI) pour documenter et tester les points de terminaison en temps réel.
 - **Tests automatisés** : Mise en place de tests unitaires avec **Jest** pour garantir la robustesse du code.
-- **Gestion de versions** : Utilisation rigoureuse de **Git** avec des messages de commit clairs pour assurer le suivi du développement.
+- **Gestion de versions** : Utilisation rigoureuse de **Git** avec des messages de commit clairs pour assurer le suivi du développement. Chaque fonctionnalité (Auth, CRUD, Docker, Tests) a fait l'objet d'un commit spécifique pour garder un historique propre.
 - **Conteneurisation** : Déploiement simplifié et environnement identique via **Docker** et **Docker Compose**.
+
+---
+
+### 🔍 Détails sur la Gestion de Versions (Git)
+
+Pour ce projet, nous avons adopté une stratégie de versionnage structurée :
+1. **Historique des Commits** : Chaque étape majeure du projet est isolée dans l'historique Git.
+2. **Messages Normés** : Utilisation de préfixes comme `feat:` (nouvelle fonctionnalité), `fix:` (correction), ou `docs:` (documentation).
+3. **Traçabilité** : Possibilité de revenir en arrière sur n'importe quelle version du code en cas d'erreur.
 
 ---
 
