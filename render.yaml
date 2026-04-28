@@ -1,12 +1,11 @@
 services:
-  # Base de données MySQL (déployée comme service Docker car Render n'a pas de MySQL managé)
-  - type: web
+  # Base de données MySQL (Service Privé)
+  - type: pservice
     name: library-db
     env: docker
     plan: starter
     dockerContext: .
-    dockerFilePath: ./db.Dockerfile
-    healthCheckPath: /
+    dockerFilePath: db.Dockerfile
     envVars:
       - key: MYSQL_DATABASE
         value: library_db
@@ -17,12 +16,12 @@ services:
       mountPath: /var/lib/mysql
       sizeGB: 1
 
-  # Backend NestJS
+  # Backend NestJS (Service Web)
   - type: web
     name: library-api
     env: docker
     dockerContext: .
-    dockerFilePath: ./Dockerfile
+    dockerFilePath: Dockerfile
     plan: starter
     healthCheckPath: /health
     envVars:
@@ -41,7 +40,7 @@ services:
       - key: DB_SYNC
         value: "true"
 
-  # Frontend React
+  # Frontend React (Service Web)
   - type: web
     name: library-frontend
     env: docker
@@ -54,4 +53,3 @@ services:
           name: library-api
           type: web
           property: host
-
