@@ -174,14 +174,16 @@ Dans ce mode, Nginx remplace le serveur de développement de Vite. Il est config
 
 ### Étape 3 : Lancer les Tests Automatisés (Jest)
 
-Le projet inclut une suite de tests pour garantir la qualité du code. 
+Le projet inclut une suite de tests pour garantir la qualité du code.
 
 **Installation de l'environnement de test :**
+
 ```bash
 npm install --save-dev @nestjs/testing jest ts-jest @types/jest supertest
 ```
 
 **Exécution des tests :**
+
 ```bash
 # Lancer les tests unitaires
 npm test
@@ -223,16 +225,6 @@ Ce projet a été conçu en respectant les standards de développement professio
 - **Tests automatisés** : Mise en place de tests unitaires avec **Jest** pour garantir la robustesse du code.
 - **Gestion de versions** : Utilisation rigoureuse de **Git** avec des messages de commit clairs pour assurer le suivi du développement.
 - **Conteneurisation** : Déploiement simplifié et environnement identique via **Docker** et **Docker Compose**.
-
----
-
-## 8) Explication chronologique des dernières révisions majeures !
-
-Durant son élaboration tardive pour clôturer l'énoncé de la SAE, ce projet a opéré diverses avancées capitales justifiant sa solidité :
-
-- **Intégration d'un Front-end Dédié et Moderne** : Le Front-end Vite avec React a été inclus pour remplacer des concepts d'anciennes templates pour se lier sur une structure d'envoi strict de requêtes dynamiques SPA via du JSON plutôt qu'un rafraichissement lourd de page de navigations.
-- **Gestion des Book Covers (Image sur l'interface Front)** : Changement de code complexe pour permettre d'exhiber une donnée non-SQL basique (un visuel). Modification pour accepter dynamiquement un champ HTTP Text (`coverUrl`) sur le Back que le composant `Book` du Front gère sans broncher.
-- **Corrections des fuites circulaires TS OpenAPI** : Reprise totale des modèles du Sequelize (Users, Authors, Books...) afin d'injecter des éléments pointus de décorateurs Swagger au sein des liaisons imbriquées One to Many (évitant que tout le flux Swagger n'ait la phobie de lire ces structures interdites du langage TypeScript).
 
 ---
 
