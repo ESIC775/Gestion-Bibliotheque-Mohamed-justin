@@ -1,10 +1,21 @@
 services:
-  # Base de données MySQL
-  - type: database
+  # Base de données MySQL (déployée comme service Docker car Render n'a pas de MySQL managé)
+  - type: web
     name: library-db
-    databaseName: library_db
-    user: root
-    plan: free # Vous pouvez changer pour un plan payant si besoin
+    env: docker
+    plan: starter
+    dockerContext: .
+    dockerFilePath: ./db.Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: MYSQL_DATABASE
+        value: library_db
+      - key: MYSQL_ROOT_PASSWORD
+        value: Youssouf2000
+    disk:
+      name: mysql-data
+      mountPath: /var/lib/mysql
+      sizeGB: 1
 
   # Backend NestJS
   - type: web
@@ -18,23 +29,15 @@ services:
       - key: PORT
         value: 3000
       - key: DB_HOST
-        fromDatabase:
-          name: library-db
-          property: host
+        value: library-db
       - key: DB_PORT
         value: 3306
       - key: DB_NAME
-        fromDatabase:
-          name: library-db
-          property: database
+        value: library_db
       - key: DB_USER
-        fromDatabase:
-          name: library-db
-          property: user
+        value: root
       - key: DB_PASSWORD
-        fromDatabase:
-          name: library-db
-          property: password
+        value: Youssouf2000
       - key: DB_SYNC
         value: "true"
 
