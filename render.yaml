@@ -45,8 +45,8 @@ services:
   - type: web
     name: library-frontend
     env: docker
-    dockerContext: ./library-frontend
-    dockerFilePath: ./library-frontend/Dockerfile
+    dockerContext: library-frontend
+    dockerFilePath: Dockerfile
     plan: starter
     envVars:
       - key: VITE_API_URL
@@ -54,3 +54,4 @@ services:
           name: library-api
           type: web
           property: host
+
