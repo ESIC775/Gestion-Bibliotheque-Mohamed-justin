@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "docker compose up -d api && echo \"\n➜  Backend: http://localhost:3000\n➜  Swagger: http://localhost:3000/docs\n➜  Postman: Import http://localhost:3000/docs-json\n\"",
+    "dev": "docker compose up -d api && echo \"\n➜  Backend: http://localhost:3000\n➜  Swagger: http://localhost:3000/docs\n\"",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
@@ -15,8 +15,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "seed:sql:info": "echo 'Le fichier SQL de seed est disponible dans docker/db/seed.sql'",
-    "export-openapi": "ts-node export-openapi.ts"
+    "seed:sql:info": "echo 'Le fichier SQL de seed est disponible dans docker/db/seed.sql'"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.6",

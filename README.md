@@ -16,6 +16,7 @@ Pour répondre aux exigences académiques, ce projet met en œuvre :
 ## 1) Contexte du projet et Résumé des fonctionnalités
 
 Ce projet s'inscrit dans le cadre de la SAE **DDAW (Développement et Déploiement d'Applications Web)**. Il a permis de mobiliser des compétences avancées en :
+
 - **Architecture logicielle** : Conception d'un système robuste et évolutif.
 - **Programmation orientée services** : Création d'une API REST performante avec NestJS.
 - **Outillage DevOps** : Conteneurisation (Docker), scripts de déploiement (Render/Koyeb), documentation (Swagger) et tests automatisés (Jest).
@@ -201,24 +202,11 @@ Les tests unitaires vérifient la logique des services, tandis que les tests E2E
 
 ---
 
-## 6) Utiliser efficacement Swagger et Postman
+## 6) Utiliser efficacement Swagger
 
-Nous avons inclus des décorateurs pointus (`@ApiProperty`) sur nos liaisons afin que Swagger et Postman reconnaissent avec exactitude la nature structurelle complexe de vos données :
-
-### Utilisation de la visionneuse Swagger Route
+Nous avons inclus des décorateurs pointus (`@ApiProperty`) sur nos liaisons afin que Swagger reconnaisse avec exactitude la nature structurelle complexe de vos données.
 
 Sans aucune installation, ouvrez votre lien vers l'API suivi de `/docs` dans votre navigateur principal tant que Docker est allumé (Ex: `http://localhost:3000/docs`). Un superbe portail UI exposera pour un autre dev toutes vos routes et affichera des champs pour écrire les valeurs d'API pour jouer avec.
-
-### L'import de l'architecture dans Postman
-
-1. Repérez dans le dossier racine de votre code le document **`openapi.json`**.
-2. Lancez **Postman**.
-3. Dans Postman, cliquez sur _Import_ en haut du menu, et sélectionnez / glissez ce fichier.
-4. Cela génère l'ensemble des routes configurées du serveur dans une collection, contenant des modèles pré-formatés, épargnant d'insupportables minutes à taper les URL et les variables manuellement.
-
-_(En coulisses: C'est le petit script magique `npm run export-openapi` défini dans `export-openapi.ts` qui a réinterprété les éléments et types stricts du Cœur NestJS en un format générique normalisé JSON que tout client d'API tiers comme Postman sait lire !)_
-
----
 
 ## 7) Conformité Technique (Critères de la SAE)
 
@@ -238,6 +226,7 @@ Ce projet a été conçu en respectant les standards de développement professio
 ### 🔍 Détails sur la Gestion de Versions (Git)
 
 Pour ce projet, nous avons adopté une stratégie de versionnage structurée :
+
 1. **Historique des Commits** : Chaque étape majeure du projet est isolée dans l'historique Git.
 2. **Messages Normés** : Utilisation de préfixes comme `feat:` (nouvelle fonctionnalité), `fix:` (correction), ou `docs:` (documentation).
 3. **Traçabilité** : Possibilité de revenir en arrière sur n'importe quelle version du code en cas d'erreur.
