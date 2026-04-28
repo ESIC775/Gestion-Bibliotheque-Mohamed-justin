@@ -19,10 +19,8 @@ async function bootstrap() {
   app.useGlobalFilters(new SequelizeExceptionFilter());
 
   const swaggerConfig = new DocumentBuilder()
-    .setTitle("API Bibliothèque")
-    .setDescription(
-      "API RESTful de gestion de bibliothèque réalisée avec NestJS, Sequelize et PostgreSQL.",
-    )
+    .setTitle("Documentation API Bibliothèque")
+    .setDescription("")
     .setVersion("1.0.0")
     .addTag("health")
     .addTag("users")
