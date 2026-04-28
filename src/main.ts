@@ -30,7 +30,6 @@ async function bootstrap() {
     .addTag("categories")
     .addTag("books")
     .addTag("loans")
-    .addBearerAuth() // Ajoute le bouton "Authorize" dans Swagger
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
