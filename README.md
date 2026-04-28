@@ -175,7 +175,20 @@ _(En coulisses: C'est le petit script magique `npm run export-openapi` défini d
 
 ---
 
-## 7) Explication chronologique des dernières révisions majeures !
+## 7) Conformité Technique (Critères de la SAE)
+
+Ce projet a été conçu en respectant les standards de développement professionnel demandés :
+
+- **Structuration modulaire** : Utilisation de NestJS pour séparer les fonctionnalités (Livres, Membres, Emprunts) en modules indépendants et réutilisables.
+- **Architecture Contrôleur/Service** : Séparation stricte entre la réception des requêtes (Controllers) et la logique métier (Services).
+- **Documentation API** : Intégration complète de **Swagger** (OpenAPI) pour documenter et tester les points de terminaison en temps réel.
+- **Tests automatisés** : Mise en place de tests unitaires avec **Jest** pour garantir la robustesse du code.
+- **Gestion de versions** : Utilisation rigoureuse de **Git** avec des messages de commit clairs pour assurer le suivi du développement.
+- **Conteneurisation** : Déploiement simplifié et environnement identique via **Docker** et **Docker Compose**.
+
+---
+
+## 8) Explication chronologique des dernières révisions majeures !
 
 Durant son élaboration tardive pour clôturer l'énoncé de la SAE, ce projet a opéré diverses avancées capitales justifiant sa solidité :
 
