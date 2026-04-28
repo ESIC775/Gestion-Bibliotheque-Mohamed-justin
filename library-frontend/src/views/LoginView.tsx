@@ -16,7 +16,7 @@ interface LoginViewProps {
 
 const LoginView = ({ onLogin }: LoginViewProps) => {
   const [email, setEmail] = useState("admin@admin.com");
-  const [password, setPassword] = useState("admin");
+  const [password, setPassword] = useState("admin123");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
