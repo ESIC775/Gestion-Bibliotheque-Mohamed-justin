@@ -164,6 +164,18 @@ Dans ce mode, Nginx remplace le serveur de développement de Vite. Il est config
 2. **Gérer le routage SPA** : il redirige toutes les requêtes vers `index.html` pour que React puisse gérer les routes sans erreurs 404.
 3. **Optimiser les performances** avec la compression Gzip.
 
+### Étape 3 : Lancer les Tests Automatisés (Jest)
+
+Le projet inclut une suite de tests pour garantir la qualité du code. Pour les exécuter :
+```bash
+# Lancer les tests unitaires
+npm test
+
+# Lancer les tests de bout en bout (E2E)
+npm run test:e2e
+```
+Les tests unitaires vérifient la logique des services, tandis que les tests E2E simulent des scénarios d'utilisation réels (création de livre, emprunt, etc.).
+
 ---
 
 ## 6) Utiliser efficacement Swagger et Postman
