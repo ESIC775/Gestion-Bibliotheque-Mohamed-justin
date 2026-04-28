@@ -19,7 +19,7 @@ export class UsersService {
       firstName: createUserDto.firstName,
       lastName: createUserDto.lastName,
       email: createUserDto.email,
-      password: '$2b$10$61EQfLnhq9TYPcM14CI9j.qX0x4t24QPu1ekwat6Og..xT.nDaI1G', // 'mohamed123' par défaut
+      password: createUserDto.password || '$2b$10$61EQfLnhq9TYPcM14CI9j.qX0x4t24QPu1ekwat6Og..xT.nDaI1G', // 'mohamed123' par défaut
     });
 
     const membershipNumber = `MEM-2026-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;

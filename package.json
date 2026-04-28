@@ -5,6 +5,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "dev": "docker compose up -d api && echo \"\n➜  Backend: http://localhost:3000\n➜  Swagger: http://localhost:3000/docs\n➜  Postman: Import http://localhost:3000/docs-json\n\"",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",

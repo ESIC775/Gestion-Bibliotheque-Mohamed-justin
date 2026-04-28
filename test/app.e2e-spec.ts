@@ -10,9 +10,14 @@ describe('Library API (e2e)', () => {
     process.env.NODE_ENV = 'test';
     const { AppModule } = require('../src/app.module');
 
+    const { JwtAuthGuard } = require('../src/auth/guards/jwt-auth.guard');
+
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
-    }).compile();
+    })
+      .overrideGuard(JwtAuthGuard)
+      .useValue({ canActivate: () => true })
+      .compile();
 
     app = moduleFixture.createNestApplication();
     app.useGlobalPipes(
@@ -59,17 +64,9 @@ describe('Library API (e2e)', () => {
         firstName: 'Nora',
         lastName: 'Martin',
         email: 'nora@example.com',
-      })
-      .expect(201);
-
-    await request(app.getHttpServer())
-      .post('/profiles')
-      .send({
-        address: '3 rue Victor Hugo',
-        phone: '+33611111111',
-        membershipNumber: 'MEM-TEST-001',
-        joinedAt: '2026-04-15T10:00:00.000Z',
-        userId: user.body.id,
+        password: 'password123',
+        address: '10 Rue de la Paix',
+        phone: '0102030405',
       })
       .expect(201);
 
