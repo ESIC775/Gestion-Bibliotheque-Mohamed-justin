@@ -24,6 +24,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 20
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
   api:
     build: .
@@ -76,7 +77,7 @@ services:
     command: >
       "until mysql -h db -u root -pYoussouf2000 library_db -e \"SELECT 1 FROM users LIMIT 1\" > /dev/null 2>&1; do echo 'Attente création des tables...'; sleep 2; done;
       echo 'Injection du jeu de données minimal...';
-      mysql -h db -u root -pYoussouf2000 library_db < /seed/seed.sql;
+      mysql -h db -u root -pYoussouf2000 --default-character-set=utf8mb4 library_db < /seed/seed.sql;
       echo 'Seed terminé.'"
     restart: "no"
 
