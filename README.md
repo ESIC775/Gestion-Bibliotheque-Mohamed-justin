@@ -137,15 +137,27 @@ Ce projet respecte religieusement toutes les contraintes de base de données exi
 
 Ouvrez le dossier principal du projet à l'endroit où se situe le document `docker-compose.yml`. Assurez-vous d'avoir lancé le service Docker.
 
+### Étape 2 : Lancer le projet avec Docker
+
+C'est la méthode recommandée pour avoir tout l'environnement (Base de données + Backend + Frontend) qui tourne ensemble.
+
 ```bash
-docker compose up --build
+# Tout lancer en arrière-plan
+docker compose up -d
+
+# Tout arrêter
+docker compose down
+
+# Forcer la reconstruction (si vous avez changé le code)
+docker compose up -d --build
 ```
 
-**Ce qui se passe :**
-Docker va télécharger Node (pour le Backend), MySQL (pour la DB), paramétrer ce petit monde dans un espace fermé transparent appelé conteneur, et charger le code de `seed.sql` dans la DB.
-Votre API répondra instantanément aux requêtes sur : `http://localhost:3000`.
+#### Accès aux services :
+- **Backend API** : `http://localhost:3000`
+- **Frontend** : `http://localhost:5173` (ou `http://localhost:80` en mode prod)
+- **Swagger** : `http://localhost:3000/docs`
 
-### Étape 2 : Lancer le Frontend (React)
+### Étape 3 : Lancer le Frontend (React)
 
 Vous avez deux façons de lancer le frontend selon vos besoins :
 
