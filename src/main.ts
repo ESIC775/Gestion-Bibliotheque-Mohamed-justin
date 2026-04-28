@@ -20,7 +20,6 @@ async function bootstrap() {
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle("Gestion Bibliothèque")
-    .setVersion("1.0")
     .addTag("health")
     .addTag("users")
     .addTag("authors")
