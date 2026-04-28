@@ -99,11 +99,30 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // On ne récupère plus l'utilisateur du localStorage pour forcer la connexion
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    const savedUser = localStorage.getItem("user");
+    const savedToken = localStorage.getItem("token");
+
+    if (savedUser && savedToken) {
+      setUser(JSON.parse(savedUser));
+    } else {
+      autoLogin();
+    }
     fetchData();
   }, []);
+
+  const autoLogin = async () => {
+    try {
+      const response = await api.post("/auth/login", {
+        email: "admin@admin.com",
+        password: "admin123",
+      });
+      localStorage.setItem("token", response.data.access_token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      setUser(response.data.user);
+    } catch (err) {
+      console.error("Auto-login failed:", err);
+    }
+  };
 
   const fetchData = async () => {
     setLoading(true);
