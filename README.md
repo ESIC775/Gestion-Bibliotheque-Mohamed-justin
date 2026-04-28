@@ -5,6 +5,7 @@ Ce projet est une application complète (Frontend et Backend) conçue pour répo
 ## 🚀 Compétences Techniques Démontrées
 
 Pour répondre aux exigences académiques, ce projet met en œuvre :
+
 - **Structuration modulaire** : Code organisé en modules NestJS clairs et isolés.
 - **Architecture API REST** : Usage strict de contrôleurs pour exposer des services JSON.
 - **Documentation OpenAPI** : Documentation interactive complète via **Swagger**.
@@ -142,31 +143,45 @@ Votre API répondra instantanément aux requêtes sur : `http://localhost:3000`.
 Vous avez deux façons de lancer le frontend selon vos besoins :
 
 #### A) Mode Développement (Vite)
+
 Idéal pour modifier le code en temps réel. Ouvrez le terminal dans le sous-dossier `library-frontend` :
+
 ```bash
 cd library-frontend
 npm install
 npm run dev
 ```
+
 Accessible sur : `http://localhost:5173`.
 
 #### B) Mode Production (Docker + Nginx)
+
 C'est la méthode la plus robuste. Le frontend est compilé et servi par un serveur **Nginx** haute performance à l'intérieur d'un conteneur Docker.
+
 ```bash
 # Depuis la racine du projet (là où est le docker-compose.yml)
 docker compose up --build frontend
 ```
+
 Accessible sur : `http://localhost:80` (Le port standard du web).
 
 **Pourquoi Nginx ?**
 Dans ce mode, Nginx remplace le serveur de développement de Vite. Il est configuré (via `nginx.conf`) pour :
+
 1. **Servir les fichiers statiques** très rapidement.
 2. **Gérer le routage SPA** : il redirige toutes les requêtes vers `index.html` pour que React puisse gérer les routes sans erreurs 404.
 3. **Optimiser les performances** avec la compression Gzip.
 
 ### Étape 3 : Lancer les Tests Automatisés (Jest)
 
-Le projet inclut une suite de tests pour garantir la qualité du code. Pour les exécuter :
+Le projet inclut une suite de tests pour garantir la qualité du code. 
+
+**Installation de l'environnement de test :**
+```bash
+npm install --save-dev @nestjs/testing jest ts-jest @types/jest supertest
+```
+
+**Exécution des tests :**
 ```bash
 # Lancer les tests unitaires
 npm test
@@ -174,6 +189,7 @@ npm test
 # Lancer les tests de bout en bout (E2E)
 npm run test:e2e
 ```
+
 Les tests unitaires vérifient la logique des services, tandis que les tests E2E simulent des scénarios d'utilisation réels (création de livre, emprunt, etc.).
 
 ---
